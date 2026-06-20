@@ -1,0 +1,17 @@
+plugins{id "com.android.application"}
+android{
+  compileSdk 34
+  namespace "com.easycall.app"
+  defaultConfig{
+    applicationId "com.easycall.app"
+    minSdk 21
+    targetSdk 34
+    versionCode 1
+    versionName "1.0.0"
+    multiDexEnabled true
+  }
+  compileOptions{sourceCompatibility JavaVersion.VERSION_1_8;targetCompatibility JavaVersion.VERSION_1_8}
+  buildTypes{release{minifyEnabled false}}
+}
+flutter{source".."}
+dependencies{implementation "androidx.multidex:multidex:2.0.1"}
