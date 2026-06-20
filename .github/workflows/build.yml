@@ -1,0 +1,85 @@
+﻿# EasyCall APK Auto-Build
+# 每次推送到 GitHub，自动构建 APK 并上传
+
+name: Build EasyCall APK
+
+on:
+  push:
+    branches: [ main, master ]
+  pull_request:
+    branches: [ main, master ]
+  workflow_dispatch:          # 允许手动触发
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      # 1. 拉取代码
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      # 2. 设置 Java（Flutter Android 需要）
+      - name: Setup Java
+        uses: actions/setup-java@v4
+        with:
+          distribution: "temurin"
+          java-version: "17"
+
+      # 3. 设置 Flutter
+      - name: Setup Flutter
+        uses: subosito/flutter-action@v2
+        with:
+          flutter-version: "3.16"
+          channel: "stable"
+          cache: true
+
+      # 4. 安装 Flutter 依赖
+      - name: Install dependencies
+        run: flutter pub get
+        working-directory: ./app
+
+      # 5. 分析代码
+      - name: Analyze code
+        run: flutter analyze
+        working-directory: ./app
+        continue-on-error: true
+
+      # 6. 构建 Release APK
+      - name: Build APK
+        run: flutter build apk --release --split-per-abi
+        working-directory: ./app
+
+      # 7. 上传 APK（按 CPU 架构分开）
+      - name: Upload ARM64 APK
+        uses: actions/upload-artifact@v4
+        with:
+          name: EasyCall-ARM64
+          path: app/build/app/outputs/flutter-apk/app-arm64-v8a-release.apk
+          if-no-files-found: warn
+
+      - name: Upload ARM32 APK
+        uses: actions/upload-artifact@v4
+        with:
+          name: EasyCall-ARM32
+          path: app/build/app/outputs/flutter-apk/app-armeabi-v7a-release.apk
+          if-no-files-found: warn
+
+      - name: Upload x86_64 APK
+        uses: actions/upload-artifact@v4
+        with:
+          name: EasyCall-x86_64
+          path: app/build/app/outputs/flutter-apk/app-x86_64-release.apk
+          if-no-files-found: warn
+
+      # 8. 也上传通用 APK（不拆分）
+      - name: Build Universal APK
+        run: flutter build apk --release
+        working-directory: ./app
+
+      - name: Upload Universal APK
+        uses: actions/upload-artifact@v4
+        with:
+          name: EasyCall-Universal
+          path: app/build/app/outputs/flutter-apk/app-release.apk
+          if-no-files-found: warn

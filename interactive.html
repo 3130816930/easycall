@@ -1,0 +1,151 @@
+﻿<!DOCTYPE html>
+<html lang="zh-CN"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+<title>EasyCall</title>
+<style>*{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent}body{font-family:-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica Neue,PingFang SC,Microsoft YaHei,sans-serif;background:linear-gradient(135deg,#667eea 0%,#764ba2 100%);display:flex;justify-content:center;min-height:100vh;padding:12px 0}#app{width:100%;max-width:420px;min-height:calc(100vh - 24px);background:#fff;position:relative;overflow:hidden;border-radius:20px;box-shadow:0 20px 60px rgba(0,0,0,.3)}.status-bar{display:flex;justify-content:space-between;padding:10px 20px 4px;font-size:11px;color:#555;font-weight:600;background:rgba(255,255,255,.95);backdrop-filter:blur(10px)}.header{display:flex;align-items:center;padding:12px 16px;background:linear-gradient(135deg,#667eea,#764ba2);color:#fff;min-height:54px;position:sticky;top:0;z-index:10}.header .t{flex:1;font-size:18px;font-weight:700;letter-spacing:.3px}.hbtn{padding:7px 12px;border:none;background:rgba(255,255,255,.2);color:#fff;border-radius:10px;font-size:13px;cursor:pointer;margin-left:6px;white-space:nowrap;backdrop-filter:blur(4px);transition:all .15s;font-weight:500}.hbtn:active{background:rgba(255,255,255,.35);transform:scale(.95)}.scr{display:none;animation:fadeIn .25s ease}.scr.act{display:block}@keyframes fadeIn{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}.login-wrap{padding:50px 32px 30px;text-align:center}.logo{width:88px;height:88px;border-radius:24px;background:linear-gradient(135deg,#667eea,#764ba2);display:flex;align-items:center;justify-content:center;margin:0 auto 18px;font-size:40px;box-shadow:0 8px 25px rgba(102,126,234,.4)}.lt{font-size:30px;font-weight:800;background:linear-gradient(135deg,#667eea,#764ba2);-webkit-background-clip:text;-webkit-text-fill-color:transparent;margin-bottom:4px;letter-spacing:-.5px}.ls{font-size:14px;color:#999;margin-bottom:40px}.fg{margin-bottom:16px;text-align:left}.fg label{font-size:12px;color:#888;font-weight:600;display:block;margin-bottom:6px;letter-spacing:.5px}.fg input{width:100%;padding:14px 16px;border:2px solid #eef0f4;border-radius:12px;font-size:15px;outline:none;transition:all .2s;background:#f8f9fc}.fg input:focus{border-color:#667eea;background:#fff;box-shadow:0 0 0 4px rgba(102,126,234,.1)}.btn-p{width:100%;padding:15px;background:linear-gradient(135deg,#667eea,#764ba2);color:#fff;border:none;border-radius:12px;font-size:17px;font-weight:700;cursor:pointer;margin-top:12px;transition:all .2s;box-shadow:0 4px 15px rgba(102,126,234,.35)}.btn-p:active{transform:scale(.97);box-shadow:0 2px 8px rgba(102,126,234,.25)}.btn-t{background:0 0;border:none;color:#667eea;font-size:14px;font-weight:600;cursor:pointer;padding:14px;transition:opacity .15s}.btn-t:active{opacity:.7}.fc{display:flex;align-items:center;padding:14px 16px;margin:4px 12px;border-radius:14px;cursor:pointer;transition:all .15s;background:#fff;border:1px solid #f0f2f5}.fc:active{background:#f5f6fa;transform:scale(.98);border-color:#e0e4ed}.av{width:48px;height:48px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:20px;font-weight:700;color:#fff;margin-right:14px;flex-shrink:0;box-shadow:0 3px 10px rgba(0,0,0,.1)}.fi{flex:1;min-width:0}.fn{font-size:16px;font-weight:600;color:#1a1a2e}.fs{display:flex;align-items:center;gap:6px;margin-top:4px}.dot{width:8px;height:8px;border-radius:50%;box-shadow:0 0 6px rgba(0,0,0,.1)}.dot.g{background:#4caf50;box-shadow:0 0 8px rgba(76,175,80,.4)}.dot.gr{background:#bdbdbd}.dot.o{background:#ff9800;box-shadow:0 0 8px rgba(255,152,0,.4)}.fst{font-size:12px;color:#999;font-weight:500}.bdg{font-size:10px;padding:2px 8px;border-radius:6px;font-weight:600}.bdg.e{background:linear-gradient(135deg,#fff3e0,#ffe0b2);color:#e65100;border:none}.act{display:flex;gap:6px}.act-btn{width:38px;height:38px;border-radius:50%;border:none;font-size:17px;cursor:pointer;background:0 0;display:flex;align-items:center;justify-content:center;transition:all .15s}.act-btn:active{background:rgba(102,126,234,.1);transform:scale(.9)}.elder-wrap{padding:30px 24px;text-align:center}.elder-t{font-size:24px;color:#555;line-height:1.5;margin-bottom:28px;font-weight:600}.elder-btn{width:100%;padding:26px;border:none;border-radius:18px;margin-bottom:14px;cursor:pointer;color:#fff;font-size:24px;font-weight:700;display:flex;align-items:center;justify-content:center;gap:16px;box-shadow:0 6px 20px rgba(0,0,0,.15);transition:all .15s;background:linear-gradient(135deg,#667eea,#764ba2)}.elder-btn:active{transform:scale(.97);box-shadow:0 3px 10px rgba(0,0,0,.1)}.elder-btn .es{font-size:14px;font-weight:400;opacity:.85;display:block;margin-top:2px}.call-overlay{position:fixed;top:0;left:0;right:0;bottom:0;background:linear-gradient(135deg,#0f0c29,#302b63,#24243e);z-index:999;display:none;flex-direction:column;align-items:center;justify-content:center}.call-overlay.s{display:flex;animation:fadeIn .3s ease}.call-av{width:100px;height:100px;border-radius:50%;background:linear-gradient(135deg,rgba(255,255,255,.1),rgba(255,255,255,.05));display:flex;align-items:center;justify-content:center;font-size:44px;color:#fff;border:2px solid rgba(255,255,255,.15);box-shadow:0 0 40px rgba(102,126,234,.3)}.call-nm{font-size:26px;color:#fff;margin-top:18px;font-weight:700}.call-tm{font-size:16px;color:rgba(255,255,255,.5);margin-top:8px;font-variant-numeric:tabular-nums;letter-spacing:1px}.call-ctrl{display:flex;gap:28px;margin-top:70px}.call-btn{width:56px;height:56px;border-radius:50%;border:none;font-size:22px;cursor:pointer;background:rgba(255,255,255,.1);color:#fff;display:flex;align-items:center;justify-content:center;transition:all .15s;backdrop-filter:blur(4px)}.call-btn:active{background:rgba(255,255,255,.2);transform:scale(.92)}.call-btn.h{width:64px;height:64px;background:linear-gradient(135deg,#f44336,#d32f2f);font-size:24px;box-shadow:0 4px 20px rgba(244,67,54,.4)}.remote-scr{background:linear-gradient(135deg,#1a1a2e,#16213e);position:absolute;top:0;left:0;right:0;bottom:0;z-index:100;display:none;flex-direction:column}.remote-scr.s{display:flex;animation:fadeIn .25s ease}.remote-hdr{background:linear-gradient(135deg,#6a1b9a,#9c27b0);color:#fff;padding:12px 16px;display:flex;align-items:center;min-height:54px;z-index:2}.remote-hdr .t{flex:1;font-size:15px;font-weight:600;letter-spacing:.3px}.remote-hdr .hbtn{background:rgba(255,255,255,.2);color:#fff;border:none;border-radius:10px;padding:7px 14px;cursor:pointer;font-size:13px;backdrop-filter:blur(4px)}.remote-phone{flex:1;display:flex;align-items:center;justify-content:center;padding:16px;position:relative;overflow:hidden}.phone-mock{width:90%;max-width:250px;aspect-ratio:9/16;background:#0d1117;border-radius:28px;border:3px solid #30363d;padding:10px;position:relative;box-shadow:0 15px 50px rgba(0,0,0,.5),inset 0 0 0 1px rgba(255,255,255,.05)}.phone-screen{width:100%;height:100%;border-radius:18px;overflow:hidden;position:relative;cursor:crosshair}.phone-notch{width:70px;height:6px;background:#0d1117;border-radius:0 0 10px 10px;position:absolute;top:0;left:50%;transform:translateX(-50%);z-index:3}.phone-content{position:absolute;top:0;left:0;width:100%;height:100%;display:flex;flex-direction:column;padding:14px 10px 10px}.phone-status{display:flex;justify-content:space-between;font-size:8px;color:rgba(255,255,255,.7);padding:0 4px 8px}.phone-time{font-weight:700;font-size:10px}.phone-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:6px;flex:1;align-content:center}.phone-app{aspect-ratio:1;border-radius:10px;display:flex;flex-direction:column;align-items:center;justify-content:center;font-size:16px;color:rgba(255,255,255,.7)}.phone-app .al{font-size:6px;margin-top:2px;opacity:.6}.remote-ti{position:absolute;width:44px;height:44px;border-radius:50%;background:rgba(255,255,255,.35);border:2.5px solid rgba(255,255,255,.7);transform:translate(-50%,-50%);pointer-events:none;animation:ripple .7s ease-out forwards}@keyframes ripple{0%{transform:translate(-50%,-50%) scale(.4);opacity:1}100%{transform:translate(-50%,-50%) scale(2.2);opacity:0}}.remote-bar{background:rgba(30,30,46,.95);padding:14px 12px;z-index:2;border-top:1px solid rgba(255,255,255,.06)}.remote-bar .rgrid{display:grid;grid-template-columns:repeat(4,1fr);gap:8px}.rc{display:flex;flex-direction:column;align-items:center;padding:12px 0;background:rgba(255,255,255,.06);border-radius:12px;cursor:pointer;transition:all .15s}.rc:active{background:rgba(255,255,255,.14);transform:scale(.95)}.rc .ri{font-size:20px;margin-bottom:2px}.rc .rl{font-size:10px;color:rgba(255,255,255,.5);font-weight:500}.req-bar{background:linear-gradient(90deg,#fff8e1,#ffecb3);padding:10px 14px;font-size:12px;display:flex;align-items:center;gap:8px;border-bottom:1px solid #ffe0b2}.shdr{display:flex;padding:16px 16px 10px;align-items:center}.shdr .c{font-size:15px;font-weight:700;color:#1a1a2e;letter-spacing:.3px}.shdr .oc{margin-left:auto;font-size:12px;color:#999;font-weight:500}.empty{padding:70px 30px;text-align:center;color:#999}.empty .icon{font-size:72px;margin-bottom:20px;color:#ddd}.toast{position:fixed;bottom:80px;left:50%;transform:translateX(-50%);background:rgba(0,0,0,.85);color:#fff;padding:12px 24px;border-radius:12px;font-size:14px;z-index:2000;display:none;backdrop-filter:blur(10px);box-shadow:0 4px 20px rgba(0,0,0,.3)}@keyframes fadeInOut{0%{opacity:0;transform:translateX(-50%) translateY(12px)}15%{opacity:1;transform:translateX(-50%) translateY(0)}85%{opacity:1;transform:translateX(-50%) translateY(0)}100%{opacity:0;transform:translateX(-50%) translateY(-10px)}}.modal-overlay{position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(0,0,0,.4);z-index:900;display:none;align-items:center;justify-content:center;backdrop-filter:blur(4px)}.modal-overlay.s{display:flex;animation:fadeIn .2s ease}.modal{background:#fff;border-radius:20px;padding:28px;width:85%;max-width:360px;max-height:80vh;overflow-y:auto;box-shadow:0 20px 60px rgba(0,0,0,.2)}.modal h3{font-size:18px;margin-bottom:18px;color:#1a1a2e;font-weight:700}.modal input,.modal .btn-p{font-size:14px;margin-bottom:8px}.ma{display:flex;justify-content:flex-end;gap:10px;margin-top:18px}.ma button{padding:10px 20px;border-radius:10px;border:none;font-size:14px;cursor:pointer;font-weight:600;transition:all .15s}.ma .cancel{background:#f0f2f5;color:#555}.ma .cancel:active{background:#e4e7ed}.ma .ok{background:linear-gradient(135deg,#667eea,#764ba2);color:#fff;box-shadow:0 3px 12px rgba(102,126,234,.3)}.ma .ok:active{transform:scale(.97)}</style></head><body style="background:linear-gradient(135deg,#667eea,#764ba2)"><div id=app><div class=status-bar><span id=sTime>9:41</span><span>📶 🔋</span></div>
+<div id=scrL class="scr act">
+<div class=login-wrap>
+<div class=logo>📹</div>
+<div class=lt>EasyCall</div>
+<div class=ls>让联系变得简单 · 为长辈设计</div>
+<div class=fg><label>📱 手机号</label><input id=lp type=tel placeholder="请输入手机号" value=13811110001></div>
+<div id=ng class=fg style=display:none><label>👤 昵称</label><input id=ln type=text placeholder="请输入昵称"></div>
+<div class=fg><label>🔒 密码</label><input id=lps type=password placeholder="请输入密码" value=123456></div>
+<button class=btn-p onclick=doLogin() id=lgnBtn>登录</button>
+<div style=margin-top:12px><button class=btn-t onclick=toggleAuth() id=taBtn>没有账号？点此注册</button></div>
+<div style=margin-top:20px;font-size:11px;color:#bbb>测试: 13811110001 / 123456 (爷爷)<br>13811110002 / 123456 (小明)</div>
+</div></div>
+
+<div id=scrH class=scr>
+<div class=header><span style=width:8px;height:8px;border-radius:50%;background:#4caf50;margin-right:8px;display:inline-block></span><span class=t>EasyCall</span><button class=hbtn onclick=showSearch()>＋好友</button><button class=hbtn onclick=toggleElder()>👴</button><button class=hbtn onclick=logout()>🚪</button></div>
+<div id=reqBar class=req-bar style=display:none><span>👤</span><span id=reqTxt style=flex:1;color:#e65100></span><span style=color:#1a73e8;font-weight:600;cursor:pointer onclick=showReq()>查看</span></div>
+<div class=shdr><span class=c>👥 好友 (<span id=fc>0</span>)</span><span class=oc>在线: <span id=oc>0</span></span></div>
+<div id=fl></div></div>
+
+<div id=scrE class=scr>
+<div class=header style=background:#e65100><span style=width:8px;height:8px;border-radius:50%;background:#4caf50;margin-right:8px;display:inline-block></span><span class=t>EasyCall · 长辈模式</span><button class=hbtn onclick=switchNormal()>切回普通</button></div>
+<div class=elder-wrap>
+<div class=elder-t>点击下方家人<br>即可视频通话</div>
+<div id=elderList></div>
+<div id=elderEmpty style=margin-top:40px;color:#bbb;font-size:14px>暂无家人在线<br><span style=font-size:12px>打开手机即可连接</span></div>
+</div></div>
+<div id=scrRemote class=remote-scr><div class=remote-hdr><span class=t></span><button class=hbtn onclick=backFromRemote()>退出</button></div><div class=remote-phone><div class=phone-mock><div class=phone-notch></div><div class=phone-screen id=phoneScreen onclick=onPhoneTap(event) style="background:linear-gradient(135deg,#1a1a2e,#2a2a4a)"><div class=phone-notch></div><div class=phone-content><div class=phone-status><span class=phone-time>10:30</span><span>📶 🔋 87%</span></div><div class=phone-grid><div class=phone-app>📞<span class=al>电话</span></div><div class=phone-app>💬<span class=al>短信</span></div><div class=phone-app>📷<span class=al>相机</span></div><div class=phone-app style=color:rgba(255,255,255,.9)><span style=font-size:22px>📹</span><span class=al style=color:rgba(255,255,255,.8)>EasyCall</span></div><div class=phone-app>🎵<span class=al>音乐</span></div><div class=phone-app>⚙️<span class=al>设置</span></div></div></div><div id=ti style=position:absolute;top:0;left:0;width:100%;height:100%;pointer-events:none></div></div></div></div></div><div class=remote-bar><div class=rgrid><div class=rc onclick=rCmd(0)><span class=ri>⬅️</span><span class=rl>返回</span></div><div class=rc onclick=rCmd(1)><span class=ri>🏠</span><span class=rl>主页</span></div><div class=rc onclick=rCmd(2)><span class=ri>🔄</span><span class=rl>最近</span></div><div class=rc onclick=rCmd(3)><span class=ri>🔊</span><span class=rl>音量</span></div><div class=rc onclick=rCmd(4)><span class=ri>📺</span><span class=rl>播视频</span></div><div class=rc onclick=rCmd(5)><span class=ri>👉</span><span class=rl>左滑</span></div><div class=rc onclick=rCmd(6)><span class=ri>👆</span><span class=rl>点击</span></div><div class=rc onclick=rCmd(7)><span class=ri>🖼️</span><span class=rl>打开相册</span></div></div></div></div><div id=callOv class=call-overlay>
+<div class=call-av id=callAv>👤</div><div class=call-nm id=callNm>...</div><div class=call-tm id=callTm>00:00</div>
+<div class=call-ctrl><button class=call-btn onclick=toggleMute() id=muteBtn>🎤</button><button class="call-btn h" onclick=endCall()>📞</button><button class=call-btn onclick=toggleSpeaker() id=spkBtn>🔊</button></div></div>
+
+<div id=modalOv class=modal-overlay><div class=modal><h3 id=modalTitle></h3><div id=modalBody></div><div class=ma><button class=cancel onclick=closeModal()>取消</button><button class=ok id=modalOk onclick=closeModal()>确定</button></div></div></div>
+
+<div id=toast class=toast></div>
+
+<script>
+const API=window.location.origin;
+var TK,U,FS=[],RQ=[],reg=false,ct=0,ci=null;
+
+function $(id){return document.getElementById(id)}
+
+function toast(m){var t=$("toast");t.textContent=m;t.style.display="block";t.style.animation="none";void t.offsetWidth;t.style.animation="fadeInOut 2.3s";setTimeout(function(){t.style.display="none"},2300)}
+function showScreen(id){document.querySelectorAll(".scr").forEach(function(s){s.classList.remove("act")});$(id).classList.add("act")}
+function closeModal(){$("modalOv").classList.remove("s")}
+function showModal(t,b,c){$("modalTitle").textContent=t;$("modalBody").innerHTML=b;$("modalOk").onclick=function(){closeModal();if(c)c()};$("modalOv").classList.add("s")}
+
+async function api(m,p,d){
+  var o={method:m,headers:{"Content-Type":"application/json"}};
+  if(TK)o.headers["Authorization"]="Bearer "+TK;
+  if(d)o.body=JSON.stringify(d);
+  try{var r=await fetch(API+p,o);return await r.json()}catch(e){return{error:"网络错误: "+e.message}}
+}
+
+function toggleAuth(){reg=!reg;$("ng").style.display=reg?"block":"none";$("lgnBtn").textContent=reg?"注册":"登录";$("taBtn").textContent=reg?"已有账号？点此登录":"没有账号？点此注册"}
+
+async function doLogin(){
+  var p=$("lp").value.trim(),ps=$("lps").value.trim(),n=$("ln").value.trim();
+  if(!p||!ps)return toast("请填写手机号和密码");
+  if(reg&&!n)return toast("请填写昵称");
+  var r=reg?await api("POST","/api/register",{phone:p,name:n,password:ps}):await api("POST","/api/login",{phone:p,password:ps});
+  if(r.error)return toast(r.error);
+  TK=r.token;U=r.user;
+  toast("登录成功！欢迎 "+r.user.name);
+  await loadF();
+}
+
+async function loadF(){
+  var r=await api("GET","/api/friends");
+  if(r.error)return toast(r.error);
+  FS=Array.isArray(r)?r:[];
+  var rr=await api("GET","/api/friends/requests");
+  RQ=Array.isArray(rr)?rr:[];
+  render();
+}
+
+function render(){
+  if(U&&U.mode==="elder"){renderElder();showScreen("scrE");return}
+  showScreen("scrH");
+  var rb=$("reqBar");
+  if(RQ.length>0){rb.style.display="flex";$("reqTxt").textContent=RQ.length+" 个好友请求"}else rb.style.display="none";
+  var onl=FS.filter(function(f){return f.online}).length;
+  $("fc").textContent=FS.length;$("oc").textContent=onl;
+  var el=$("fl");
+  if(FS.length===0){el.innerHTML='<div class=empty><div class=icon>👥</div>还没有好友<br><span style=font-size:13px>点右上角＋好友添加</span></div>';return}
+  el.innerHTML=FS.map(function(f){
+    var s=f.inCall?"通话中":f.online?"在线":"离线",dc=f.inCall?"o":f.online?"g":"gr";
+    return'<div class=fc onclick="callF('+f.id+',\''+f.name+'\')"><div class=av style=background:'+(f.online?"#4caf50":"#bdbdbd")+'>'+f.name[0]+'</div><div class=fi><div class=fn>'+f.name+(f.isElder?'<span class="bdg e">长辈</span>':"")+'</div><div class=fs><span class="dot '+dc+'"></span><span class=fst>'+s+'</span></div></div><div class=act><button class=act-btn style=color:'+(f.inCall?"#ccc":"#1a73e8")+' onclick="event.stopPropagation();callF('+f.id+',\''+f.name+'\')">📹</button>'+(f.inCall?"":f.online?'<button class=act-btn style=color:#7b1fa2 onclick="event.stopPropagation();remoteC('+f.id+',\''+f.name+'\')">📱</button>':"")+'</div></div>'
+  }).join("")
+}
+
+function renderElder(){
+  var o=FS.filter(function(f){return f.online});
+  $("elderEmpty").style.display=o.length===0?"block":"none";
+  $("elderList").innerHTML=o.map(function(f){return'<button class=elder-btn onclick="callF('+f.id+',\''+f.name+'\')"><span style=font-size:32px>👤</span><div><div>'+f.name+'</div><div style=font-size:13px;font-weight:400;opacity:.8>'+(f.inCall?"通话中...":"在线")+'</div></div></button>'}).join("")
+}
+
+async function toggleElder(){
+  var r=await api("POST","/api/user/mode",{mode:"elder"});
+  if(r.success){U.mode="elder";render();toast("已切换到长辈模式")}
+}
+
+async function switchNormal(){
+  var r=await api("POST","/api/user/mode",{mode:"normal"});
+  if(r.success){U.mode="normal";render();toast("已切换到普通模式")}
+}
+
+function callF(id,name){
+  var f=FS.find(function(x){return x.id===id});
+  if(!f||!f.online)return toast("对方不在线");
+  if(f.inCall)return toast("对方正在通话中");
+  $("callNm").textContent=name;$("callAv").textContent=name[0]||"👤";
+  $("callTm").textContent="00:00";$("callOv").classList.add("s");ct=0;
+  clearInterval(ci);ci=setInterval(function(){ct++;var m=String(Math.floor(ct/60)).padStart(2,"0");var s=String(ct%60).padStart(2,"0");$("callTm").textContent=m+":"+s},1000)
+}
+
+function endCall(){clearInterval(ci);$("callOv").classList.remove("s");toast("通话已结束")}
+function toggleMute(){var b=$("muteBtn");b.style.opacity=b.style.opacity==="1"?".5":"1"}
+function toggleSpeaker(){var b=$("spkBtn");b.style.opacity=b.style.opacity==="1"?".5":"1"}
+
+function showSearch(){
+  showModal("添加好友",'<input id=sp placeholder="输入对方手机号" value=13811110002><button class=btn-p style=font-size:14px;padding:10px onclick=doSearch()>搜索</button><div id=sr style=margin-top:10px></div>')
+}
+
+async function doSearch(){
+  var q=$("sp").value.trim();if(!q)return;
+  var r=await api("GET","/api/users/search?q="+encodeURIComponent(q));
+  var el=$("sr");
+  if(!Array.isArray(r)||r.length===0){el.innerHTML='<div style=color:#999;font-size:13px;text-align:center;padding:10px>未找到用户</div>';return}
+  el.innerHTML=r.map(function(u){return'<div style=display:flex;align-items:center;padding:8px 0;border-bottom:1px solid #f0f0f0><div class=av style=width:36px;height:36px;font-size:14px;background:#1a73e8>'+u.name[0]+'</div><div style=flex:1;margin-left:10px><div style=font-size:14px>'+u.name+'</div><div style=font-size:11px;color:#999>'+u.phone+'</div></div><button style=padding:6px 14px;background:#1a73e8;color:#fff;border:none;border-radius:6px;font-size:12px;cursor:pointer onclick="sendReq('+u.id+',\''+u.name+'\')">＋好友</button></div>'}).join("")
+}
+
+async function sendReq(id,name){var r=await api("POST","/api/friends/request",{toUserId:id});if(r.error)return toast(r.error);toast("已向 "+name+" 发送好友请求");closeModal()}
+
+function showReq(){
+  if(RQ.length===0)return toast("暂无好友请求");
+  showModal("好友请求",RQ.map(function(r){return'<div style=display:flex;align-items:center;padding:8px 0;border-bottom:1px solid #eee><span style=flex:1>👤 '+r.name+" ("+r.phone+')</span><button onclick=acceptReq('+r.id+') style=padding:4px 10px;background:#4caf50;color:#fff;border:none;border-radius:4px;font-size:12px;cursor:pointer;margin-right:4px>✓ 接受</button><button onclick=rejectReq('+r.id+') style=padding:4px 10px;background:#f44336;color:#fff;border:none;border-radius:4px;font-size:12px;cursor:pointer>✗ 拒绝</button></div>'}).join(""),null)
+}
+
+async function acceptReq(id){await api("POST","/api/friends/respond",{requestId:id,accept:true});toast("已接受");closeModal();await loadF()}
+async function rejectReq(id){await api("POST","/api/friends/respond",{requestId:id,accept:false});toast("已拒绝");closeModal();await loadF()}
+
+var rpName='';function remoteC(id,name){rpName=name;$('scrRemote').style.display='flex';$('scrRemote').classList.add('s');$('scrRemote').querySelector('.t').textContent='✨ 远程协助 · '+name;$('scrH').classList.remove('act')}function backFromRemote(){$('scrRemote').style.display='none';$('scrH').classList.add('act')}function onPhoneTap(e){var r=e.target.closest('.phone-screen');if(!r)return;var rect=r.getBoundingClientRect();var x=e.clientX-rect.left;var y=e.clientY-rect.top;var pctX=Math.round(100*x/rect.width);var pctY=Math.round(100*y/rect.height);var ti=$('ti');var d=document.createElement('div');d.className='remote-ti';d.style.left=x+'px';d.style.top=y+'px';ti.appendChild(d);setTimeout(function(){d.remove()},700);toast('触摸: ('+pctX+'%, '+pctY+'%)')}function rCmd(n){var c=['返回键','主页键','最近任务','音量调节','播放视频','左滑手势','点击操作','打开相册'];toast('已发送: '+c[n])}function logout(){TK=null;U=null;FS=[];RQ=[];showScreen("scrL");toast("已退出")}
+
+window.onload=async function(){
+  var r=await api("POST","/api/login",{phone:"13811110001",password:"123456"});
+  if(r.token){TK=r.token;U=r.user;toast("自动登录: "+r.user.name);await loadF()}
+};
+</script></div></body></html>

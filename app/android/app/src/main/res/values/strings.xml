@@ -1,0 +1,5 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">EasyCall</string>
+    <string name="accessibility_service_desc">EasyCall 使用此服务进行远程协助触摸操作</string>
+</resources>
