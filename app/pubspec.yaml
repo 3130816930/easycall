@@ -18,7 +18,6 @@ dependencies:
   permission_handler: ^11.1.0
   wakelock_plus: ^1.1.4
   screen_brightness: ^0.2.2
-  audioplayers: ^5.2.1
 
 dev_dependencies:
   flutter_test:
