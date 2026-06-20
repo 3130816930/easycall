@@ -34,10 +34,12 @@ jobs:
           channel: "stable"
           cache: true
 
-      # 4. 安装 Flutter 依赖
-      - name: Install dependencies
-        run: flutter pub get
+      # 4. 安装 Flutter 依赖和重建外壳
+      - name: Install dependencies and recreate android
         working-directory: ./app
+        run: |
+          flutter pub get
+          flutter create .
 
       # 5. 分析代码
       - name: Analyze code
