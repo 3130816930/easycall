@@ -2,6 +2,7 @@
 import "../models/user_model.dart";
 import "../services/websocket_service.dart";
 import "../services/webrtc_service.dart";
+import "package:flutter_webrtc/flutter_webrtc.dart";
 
 class CallScreen extends StatefulWidget {
   final UserModel peerUser;
