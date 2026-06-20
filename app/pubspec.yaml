@@ -10,7 +10,7 @@ dependencies:
   flutter:
     sdk: flutter
   cupertino_icons: ^1.0.6
-  flutter_webrtc: ^0.9.52
+  flutter_webrtc: ^0.9.48+hotfix.1
   socket_io_client: ^2.0.3+1
   http: ^1.1.0
   shared_preferences: ^2.2.2
